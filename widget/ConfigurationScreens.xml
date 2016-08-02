@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+(C) Copyright 2015 Somonar B.V.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ -->
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="Configuration">
+        <section>
+            <widgets>
+                <decorator-screen name="CommonConfigurationDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-has-permission permission="${activeApp}" action="_ADMIN"/>
+                            </condition>
+                            <widgets>
+                               
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.${activeApp}ViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="SystemProperties">
+        <section>
+            <widgets>
+                <decorator-screen name="CommonConfigurationDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <actions>
+                                <entity-condition entity-name="SystemProperty" list="systemProperties">
+                                    <condition-expr field-name="systemResourceId" operator="equals" value="${activeApp}"/>
+                                </entity-condition>
+                            </actions>
+                            <widgets>
+                                <screenlet title="${activeApp}">
+                                    <include-form location="component://${activeApp}/widget/forms/ConfigurationForms.xml" name="ListSystemProperties"/>
+                                </screenlet>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.${activeApp}ViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="NewSystemProperty">
+        <section>
+            <widgets>
+                <decorator-screen name="CommonConfigurationDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.NewSystemProperty} ${uiLabelMap.CommonOf} ${activeApp}">
+                                    <include-form location="component://${activeApp}/widget/forms/ConfigurationForms.xml" name="NewSystemProperty"/>
+                                </screenlet>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.${activeApp}ViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="EditSystemProperty">
+        <section>
+            <widgets>
+                <decorator-screen name="CommonConfigurationDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <actions>
+                                <entity-one value-field="systemProperty" entity-name="SystemProperty">
+                                    <field-map field-name="systemResourceId" from-field="parameters.systemResourceId"/>
+                                    <field-map field-name="systemPropertyId" from-field="parameters.systemPropertyId"/>
+                                </entity-one>
+                            </actions>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.SystemProperty} ${uiLabelMap.CommonOf} ${activeApp}">
+                                    <include-form location="component://${activeApp}/widget/forms/ConfigurationForms.xml" name="EditSystemProperty"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+            <fail-widgets>
+                <label style="h3">${uiLabelMap.${activeApp}ViewPermissionError}</label>
+            </fail-widgets>
+        </section>
+    </screen>
+    
+</screens>

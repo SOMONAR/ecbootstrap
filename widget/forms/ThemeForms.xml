@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+(C) Copyright 2015 Somonar B.V.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ -->
+ 
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+    
+    <form name="ListThemeResources" type="list" list-name="themeResources"
+        odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+        <field name="sequenceId" title=" " title-area-style="align-right" widget-area-style="align-right">
+            <display/>
+        </field>
+        <field name="visualThemeId"><hidden/></field>
+        <field name="resourceTypeEnumId" title="${uiLabelMap.CommonType}">
+            <display-entity entity-name="Enumeration" key-field-name="enumId"/>
+        </field>
+        <field name="resourceValue" title="${uiLabelMap.CommonValue}"><display/></field>
+        <field name="editLink" widget-style="buttontext" title=" ">
+           <hyperlink target="editthemeresource" description="${uiLabelMap.CommonEdit}">
+                <parameter param-name="visualThemeId"/>
+                <parameter param-name="resourceTypeEnumId"/>
+                <parameter param-name="sequenceId"/>
+            </hyperlink>
+        </field>
+        <field name="deleteLink" widget-style="buttontext" title=" ">
+           <hyperlink target="removethemeresource" description="${uiLabelMap.CommonDelete}" request-confirmation="true">
+                <parameter param-name="visualThemeId"/>
+                <parameter param-name="resourceTypeEnumId"/>
+                <parameter param-name="sequenceId"/>
+            </hyperlink>
+        </field>
+    </form>
+    
+    <form name="NewThemeResource" type="single" target="createthemeresource">
+        <field name="visualThemeId" title="${uiLabelMap.Theme}"><display/></field>
+        <field name="resourceTypeEnumId" title="${uiLabelMap.CommonType}" required-field="true">
+            <drop-down>
+                <entity-options description="${description}" entity-name="Enumeration" key-field-name="enumId">
+                    <entity-constraint name="enumTypeId" value="VT_RES_TYPE"/>
+                    <entity-order-by field-name="description"/>
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="sequenceId" title="${uiLabelMap.CommonSequenceNum}" required-field="true"><text size="100"/></field>
+        <field name="resourceValue" title="${uiLabelMap.CommonValue}" required-field="true"><text size="100"/></field>
+        <field name="dummy99" title=" "><display/></field>
+        <field name="submitButton" title="${uiLabelMap.CommonSave}" widget-style="smallSubmit" >
+            <submit button-type="button"/>
+        </field>
+    </form>
+    
+    <form name="EditThemeResource" type="single" target="updatethemeresource" default-map-name="themeResource">
+        <field name="visualThemeId"><hidden/></field>
+        <field name="resourceTypeEnumId" title="${uiLabelMap.CommonType}">
+            <display-entity entity-name="Enumeration" key-field-name="enumId"/>
+        </field>
+        <field name="sequenceId" title="${uiLabelMap.CommonSequenceNum}"><display/></field>
+        <field name="resourceValue" title="${uiLabelMap.CommonValue}" required-field="true"><text size="100"/></field>
+        <field name="dummy99" title=" "><display/></field>
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}" widget-style="buttontext" >
+            <submit button-type="button" request-confirmation="true"/>
+        </field>
+    </form>
+    
+</forms>

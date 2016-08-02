@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+(C) Copyright 2015 Somonar B.V.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ -->
+<menus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-menu.xsd">
+
+    
+    <menu name="ConfigurationTabBar" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml"
+          default-menu-item-name="systemProperties">
+        <menu-item name="systemProperties" title="${uiLabelMap.SystemProperties}">
+            <condition>
+                <and>
+                    <or>
+                        <if-has-permission permission="${activeApp}" action="_ADMIN"/>
+                    </or>
+                </and>
+            </condition>
+            <link target="systemproperties"/>
+        </menu-item>
+        <menu-item name="themeResources" title="${uiLabelMap.ThemeResources}">
+            <condition>
+                <and>
+                    <or>
+                        <if-has-permission permission="${activeApp}" action="_ADMIN"/>
+                    </or>
+                </and>
+            </condition>
+            <link target="themeresources"/>
+        </menu-item>
+        
+    </menu>
+    
+    <menu name="ConfigurationSubTabBar" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml"
+          menu-container-style="button-bar button-style-2 no-clear">
+        <menu-item name="createSystemProperty" title="${uiLabelMap.NewSystemProperty}">
+            <condition>
+                <or>
+                    <if-has-permission permission="${activeApp}" action="_ADMIN"/>
+                </or>
+            </condition>
+            <link target="newsystemproperty">
+                <parameter param-name="systemResourceId" value="${activeApp}"/>
+            </link>
+        </menu-item>
+        <menu-item name="createThemeResource" title="${uiLabelMap.NewThemeResource}">
+            <condition>
+                <or>
+                    <if-has-permission permission="${activeApp}" action="_ADMIN"/>
+                </or>
+            </condition>
+            <link target="newthemeresource">
+                <parameter param-name="systemResourceId" value="${activeApp}"/>
+            </link>
+        </menu-item>
+        
+    </menu>
+</menus>
