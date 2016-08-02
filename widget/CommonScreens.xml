@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+(C) Copyright 2015 Somonar B.V.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ -->
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="main-decorator">
+        <section>
+            <actions>
+                <set field="activeApp" value="ecbootstrap" global="true"/>
+                
+                <property-map resource="${activeApp}-UiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+
+                <set field="layoutSettings.companyName" from-field="uiLabelMap.${activeApp}CompanyName" global="true"/>
+                <set field="layoutSettings.companySubtitle" from-field="uiLabelMap.${activeApp}CompanySubtitle" global="true"/>
+                
+                <set field="layoutSettings.javaScripts[]" value="/${activeApp}/images/${activeApp}/js/${activeApp}.js" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/${activeApp}/images/${activeApp}/css/${activeApp}.css" global="true"/>
+                
+                <set field="applicationMenuName" value="MainAppBar" global="true"/>
+                <set field="applicationMenuLocation" value="component://${activeApp}/widget/${activeApp}-Menus.xml" global="true"/>
+                <set field="applicationTitle" value="${uiLabelMap.${activeApp}Application}" global="true"/>
+            </actions>
+            <widgets>
+                <include-screen name="GlobalDecorator" location="component://common/widget/CommonScreens.xml"/>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="CommonConfigurationDecorator">
+        <section>
+            <actions>
+                <property-map resource="ConfigurationUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="systemResourceId" value="${activeApp}"/>
+                <set field="headerItem" value="configuration"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-has-permission permission="${activeApp}" action="_ADMIN"/>
+                            </condition>
+                            <widgets>
+                                <include-menu name="ConfigurationTabBar" location="component://${activeApp}/widget/ConfigurationMenus.xml"/>
+                                <include-menu name="ConfigurationSubTabBar" location="component://${activeApp}/widget/ConfigurationMenus.xml"/>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.${activeApp}ViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="CommonDecorator">
+        <section>
+            <actions>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-has-permission permission="${activeApp}" action="_VIEW"/>
+                            </condition>
+                            <widgets>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.${activeApp}ViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="CommonLayerDecorator">
+        <section>
+            <actions>
+                <set field="activeApp" value="ecbootstrap" global="true"/>
+                <property-map resource="${activeApp}-UiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-section-include name="body"/>
+            </widgets>
+        </section>
+    </screen>
+    
+</screens>
