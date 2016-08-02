@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+(C) Copyright 2015 Somonar B.V.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ -->
+<entity-engine-xml>
+    
+    <Enumeration enumId="VT_NAV_APPHDR_LOC" enumTypeId="VT_RES_TYPE" sequenceId="30" description="Location of Application header."/>
+    <Enumeration enumId="VT_BS_TMPLT_LOC" description="Theme Base Template Location" enumTypeId="VT_RES_TYPE" sequenceId="07"/>
+    <Enumeration enumId="VT_BS_MACRO_LIB" description="Theme Base Macro Library Location" enumTypeId="VT_RES_TYPE" sequenceId="17"/>
+    
+    <VisualTheme visualThemeId="ecbootstrap" visualThemeSetId="ECOMMERCE" description="EC Boostrap Based Theme - Floating Layout, Sight-Impaired Accessible, Bidirectional"/>
+    
+    <VisualThemeResource resourceTypeEnumId="VT_NAME" resourceValue="EC BootstrapBased Theme" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_SHORTCUT_ICON" resourceValue="/ecbootstrap/images/ecbootstrap-favicon.png" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_HDR_IMAGE_URL" resourceValue="/ecbootstrap/images/ecbootstrap-HeaderImage.png" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_SCREENSHOT" resourceValue="/ecbootstrap/images/screenshot.png" sequenceId="01" visualThemeId="ecbootstrap"/>
+    
+    <!-- css related -->
+    <VisualThemeResource resourceTypeEnumId="VT_STYLESHEET" resourceValue="/ecbootstrap/images/bootstrap-3.3.6-dist/css/bootstrap.css" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_STYLESHEET" resourceValue="/ecbootstrap/images/ecbootstrap.css" sequenceId="02" visualThemeId="ecbootstrap"/>
+    
+    <!-- ftl references -->
+    <VisualThemeResource resourceTypeEnumId="VT_BS_TMPLT_LOC" resourceValue="component://ecbootstrap/template/includes/htmlTemplate.ftl" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_HDR_TMPLT_LOC" resourceValue="component://ecbootstrap/template/headerHead.ftl" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_MSG_TMPLT_LOC" resourceValue="component://common/webcommon/includes/messages.ftl" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_FTR_TMPLT_LOC" resourceValue="component://ecbootstrap/template/footer.ftl" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_NAV_TMPLT_LOC" resourceValue="component://ecbootstrap/template/emptyAppBar.ftl" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_NAV_APPHDR_LOC" resourceValue="component://ecbootstrap/template/appbar.ftl" sequenceId="01" visualThemeId="ecbootstrap"/>
+    
+    <VisualThemeResource resourceTypeEnumId="VT_BS_MACRO_LIB" resourceValue="component://ecbootstrap/template/includes/library/htmlBSMacroLibrary.ftl" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_SCRN_MACRO_LIB" resourceValue="component://ecbootstrap/template/includes/library/htmlScreenMacroLibrary.ftl" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_FORM_MACRO_LIB" resourceValue="component://ecbootstrap/template/includes/library/htmlFormMacroLibrary.ftl" sequenceId="01" visualThemeId="ecbootstrap"/>
+    <VisualThemeResource resourceTypeEnumId="VT_TREE_MACRO_LIB" resourceValue="component://ecbootstrap/template/includes/library/htmlTreeMacroLibrary.ftl" sequenceId="01" visualThemeId="ecbootstrap"/> -->
+    <VisualThemeResource resourceTypeEnumId="VT_MENU_MACRO_LIB" resourceValue="component://ecbootstrap/template/includes/library/htmlMenuMacroLibrary.ftl" sequenceId="01" visualThemeId="ecbootstrap"/>
+    
+    <!-- foundation & jquery related js -->
+    <VisualThemeResource resourceTypeEnumId="VT_HDR_JAVASCRIPT" resourceValue="/images/jquery/jquery-1.11.0.min.js" sequenceId="02" visualThemeId="ecbootstrap"/>
+    
+    <VisualThemeResource resourceTypeEnumId="VT_FTR_JAVASCRIPT" resourceValue="/ecbootstrap/images/bootstrap-3.3.6-dist/js/bootstrap.js " sequenceId="01" visualThemeId="ecbootstrap"/>
+    
+    <!-- ad server related js
+    <VisualThemeResource resourceTypeEnumId="VT_HDR_JAVASCRIPT" resourceValue="http://ads.lnkrz.com/adserver/www/delivery/spcjs.php?id=6" sequenceId="45" visualThemeId="ecbootstrap"/>
+     -->
+    
+    
+</entity-engine-xml>
