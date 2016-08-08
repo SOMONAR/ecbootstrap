@@ -1,4 +1,4 @@
 <!--- (C) Copyright 2015 Somonar B.V. -->
 
 # ecbootstrap
-A theme for a bootstrap based ecommerce component. 
+Bootstrap based theme component for ecommerce components in/for Apache OFBiz™ based and ORRTIZ™
