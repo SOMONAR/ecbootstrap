@@ -1,4 +1,5 @@
-<!--- (C) Copyright 2015 Somonar B.V. -->
+<!--- © 2015 Copyright Somonar B.V. 
+<!-- This page is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>-->
 
 # ecbootstrap
 Bootstrap based theme component for ecommerce components in/for Apache OFBiz™ based and ORRTIZ™
@@ -16,3 +17,7 @@ Instructions on how to implement can be found here: [https://github.com/ORRTIZ/e
 ## Issues
 For an overview of open and closed issue, see: [https://github.com/ORRTIZ/ecbootstrap/issues](https://github.com/ORRTIZ/ecbootstrap/issues)
 
+## License
+© 2015 Copyright Somonar B.V.
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" /></a><br />This page is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>.
