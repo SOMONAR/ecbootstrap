@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+(C) Copyright 2015 Somonar B.V.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ -->
+
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/site-conf.xsd">
+
+
+    <!-- Configuration -->
+    <request-map uri="configuration">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="configuration"/>
+    </request-map>
+    <request-map uri="systemproperties">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="systemproperties"/>
+    </request-map>
+    <request-map uri="newsystemproperty">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="newsystemproperty"/>
+    </request-map>
+    <request-map uri="editsystemproperty">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editsystemproperty"/>
+    </request-map>
+    <request-map uri="createsystemproperty">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createSystemProperty"/>
+        <response name="success" type="view" value="systemproperties"/>
+    </request-map>
+    <request-map uri="updatesystemproperty">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateSystemProperty"/>
+        <response name="success" type="view" value="systemproperties"/>
+    </request-map>
+    <request-map uri="removesystemproperty">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="removeSystemProperty"/>
+        <response name="success" type="view" value="systemproperties"/>
+    </request-map>
+    
+    <!-- theme related requests -->
+    <request-map uri="themeresources">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="themeresources"/>
+    </request-map>
+    <request-map uri="newthemeresource">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="newthemeresource"/>
+    </request-map>
+    <request-map uri="editthemeresource">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editthemeresource"/>
+    </request-map>
+    <request-map uri="createthemeresource">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createVisualThemeResource"/>
+        <response name="success" type="view" value="themeresources"/>
+    </request-map>
+    <request-map uri="updatethemeresource">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updateVisualThemeResource"/>
+        <response name="success" type="view" value="themeresources"/>
+    </request-map>
+    <request-map uri="removethemeresource">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="removeVisualThemeResource"/>
+        <response name="success" type="view" value="themeresources"/>
+    </request-map>
+    
+
+    <!-- Configuration -->
+    <view-map name="configuration" type="screen" page="component://ecbootstrap/widget/ConfigurationScreens.xml#Configuration"/>
+    <view-map name="systemproperties" type="screen" page="component://ecbootstrap/widget/ConfigurationScreens.xml#SystemProperties"/>
+    <view-map name="newsystemproperty" type="screen" page="component://ecbootstrap/widget/ConfigurationScreens.xml#NewSystemProperty"/>
+    <view-map name="editsystemproperty" type="screen" page="component://ecbootstrap/widget/ConfigurationScreens.xml#EditSystemProperty"/>
+    
+    <!-- theme related view-maps -->
+    <view-map name="themeresources" type="screen" page="component://ecbootstrap/widget/ThemeScreens.xml#ThemeResources"/>
+    <view-map name="newthemeresource" type="screen" page="component://ecbootstrap/widget/ThemeScreens.xml#NewThemeResource"/>
+    <view-map name="editthemeresource" type="screen" page="component://ecbootstrap/widget/ThemeScreens.xml#EditThemeResource"/>
+    
+</site-conf>
